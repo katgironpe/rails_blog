@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'devise', '~> 4.1'
+gem 'devise', github: 'plataformatec/devise'
 gem 'friendly_id', '~> 5.1.0'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
