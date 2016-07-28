@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     get 'sign-up' => 'devise/registrations#new'
   end
 
-  root to: 'home#index'
+  root to: 'posts#index'
 end

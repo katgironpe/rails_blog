@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe PostsController, type: :routing do
+describe PostsController do
   describe "routing" do
 
     it "routes to #index" do
@@ -34,6 +34,5 @@ RSpec.describe PostsController, type: :routing do
     it "routes to #destroy" do
       expect(:delete => "/posts/1").to route_to("posts#destroy", :id => "1")
     end
-
   end
 end
