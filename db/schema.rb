@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 20160728153843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -27,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160728153843) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "posts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
     t.text     "body"
@@ -38,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160728153843) do
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email",                  default: "", null: false
