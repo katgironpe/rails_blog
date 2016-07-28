@@ -76,7 +76,10 @@ GEM
     factory_girl_rails (4.7.0)
       factory_girl (~> 4.7.0)
       railties (>= 3.0.0)
+    ffaker (2.2.0)
     ffi (1.9.14)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     growl (1.0.3)
@@ -228,6 +231,8 @@ DEPENDENCIES
   devise (~> 4.1)
   email_spec
   factory_girl_rails (~> 4.7.0)
+  ffaker
+  friendly_id (~> 5.1.0)
   growl
   jbuilder (~> 2.5)
   jquery-rails

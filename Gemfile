@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'devise', '~> 4.1'
+gem 'friendly_id', '~> 5.1.0'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18'
@@ -13,6 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'ffaker'
 end
 
 group :development do
