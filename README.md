@@ -6,12 +6,14 @@
 
 ### Install Rails dependencies
 
-```bundle```
+```
+bundle
+```
 
 
 ### Environment variables
 
-```ruby
+```
 SITE_TITLE='Your Site Title'
 SITE_DESCRIPTION='Your Site Description'
 ```
