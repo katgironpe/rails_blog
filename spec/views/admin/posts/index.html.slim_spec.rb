@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe "admin/posts/index" do
-  let(:post1) { create(:post, title: 'Title', body: 'MyText') }
-  let(:post2) { create(:post, title: 'Title', body: 'MyText') }
+  let!(:post1) { create(:post, title: 'Title', body: 'MyText') }
+  let!(:post2) { create(:post, title: 'Title', body: 'MyText') }
 
   before(:each) do
-    assign(:posts, [post1, post2])
+    assign(:posts, Post.order('created_at DESC').page(1))
   end
 
   it "renders a list of posts" do

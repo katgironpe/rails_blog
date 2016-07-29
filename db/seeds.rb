@@ -3,7 +3,7 @@ User.create!(first_name: 'Kath', last_name: 'Pe', email: 'kath@fakedomain.tld', 
 user = User.first
 user.confirm
 
-100.times do
+10.times do
   post = Post.new
   post.user_id = user.id
   post.title = FFaker::Movie.title
