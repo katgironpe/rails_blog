@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @title = @post.title
   end
 
   private

@@ -11,6 +11,28 @@ describe ApplicationHelper do
     end
   end
 
+  describe '#page_title' do
+    context "when @title is not assigned" do
+      before do
+        ENV['SITE_TITLE'] = 'A Movie Blog'
+      end
+
+      it "returns the page title" do
+        expect(helper.page_title).to eq('A Movie Blog')
+      end
+    end
+
+    context "when @title is assigned" do
+      before do
+        @title = 'A Music Blog'
+      end
+
+      it "returns the page title" do
+        expect(helper.page_title).to eq('A Music Blog')
+      end
+    end
+  end
+
   describe '#site_description' do
     before do
       ENV['SITE_DESCRIPTION'] = nil

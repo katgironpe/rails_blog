@@ -15,8 +15,9 @@ describe PostsController do
   describe "#show" do
     it "assigns the requested post as @post" do
       post = Post.create! valid_attributes
-      get :show, params: {id: post.to_param}
+      get :show, params: { id: post.to_param }
       expect(assigns(:post)).to eq(post)
+      expect(assigns(:title)).to eq(post.title)
     end
   end
 end

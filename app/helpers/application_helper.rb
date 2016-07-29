@@ -7,6 +7,10 @@ module ApplicationHelper
     ENV['SITE_DESCRIPTION'] || "Your Blog Description"
   end
 
+  def page_title
+    @title ||= site_title
+  end
+
   def alert_message(message, type = 'info')
     %(
       <div class="alert alert-#{type}" role="alert">
