@@ -4,6 +4,14 @@
 
 ```npm install -g bower && bower install```
 
-Install Rails dependencies:
+### Install Rails dependencies
 
 ```bundle```
+
+
+### Environment variables
+
+```ruby
+SITE_TITLE='Your Site Title'
+SITE_DESCRIPTION='Your Site Description'
+```

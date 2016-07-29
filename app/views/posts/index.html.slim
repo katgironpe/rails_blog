@@ -6,3 +6,4 @@ section.posts.row
         p.post-meta
           | Posted by <a href="#">#{post.author_name}</a> on #{local_time post.created_at}
       hr/
+  = paginate @posts

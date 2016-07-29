@@ -1,23 +1,33 @@
-= render 'admin/shared/nav'
+.row
+  .col-xs-6= render 'admin/shared/nav'
+  .col-xs-6
 
-= link_to 'Create a new post', new_admin_post_path
+.row
+  .col-xs-8
+    h2.admin-title Listing posts
+  .col-xs-4
+    .create-action= link_to 'Create a new post', new_admin_post_path, class: 'pull-right btn btn-primary'
 
-h2 Listing posts
+.row
+  .col-xs-12
+    table.table.table-hover
+      thead.thead-inverse
+        tr
+          th Title
+          th Date Created
+          th
+          th
+          th
 
-table.table.table-hover
-  thead.thead-inverse
-    tr
-      th Title
-      th Date Created
-      th
-      th
-      th
+      tbody
+        - @posts.each do |post|
+          tr
+            td = post.title
+            td = local_time post.created_at
+            td = link_to 'Show', admin_post_path(post)
+            td = link_to 'Edit', edit_admin_post_path(post)
+            td = link_to 'Destroy', admin_post_path(post), data: { confirm: 'Are you sure?' }, method: :delete
 
-  tbody
-    - @posts.each do |post|
-      tr
-        td = post.title
-        td = local_time post.created_at
-        td = link_to 'Show', admin_post_path(post)
-        td = link_to 'Edit', edit_admin_post_path(post)
-        td = link_to 'Destroy', admin_post_path(post), data: { confirm: 'Are you sure?' }, method: :delete
+.row
+  .col-xs-12
+    = raw paginate(@posts)

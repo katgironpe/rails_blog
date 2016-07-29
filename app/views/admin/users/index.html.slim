@@ -13,3 +13,5 @@ table.table.table-hover
         td= admin_user.name
         td= admin_user.email
         td = link_to 'Destroy', admin_user_path(admin_user), data: { confirm: 'Are you sure?' }, method: :delete
+
+= paginate @users

@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :destroy]
 
   def index
-    @users = User.order('last_name ASC')
+    @users = User.order('last_name ASC').page(params[:page])
   end
 
   def show
