@@ -22,11 +22,28 @@ describe ApplicationHelper do
   end
 
   describe '#alert_message' do
-    let!(:message) { 'You have successfully signed up' }
+    let(:message) { 'You have successfully signed up' }
 
     it "returns correct markup" do
       expect(helper.alert_message(message)).to have_css('div.alert.alert-info')
     end
   end
-end
 
+  describe '#to_html' do
+    context 'code block' do
+      let(:text) { '```Some code block```' }
+
+      it "converts markdown to html" do
+        expect(helper.to_html(text)).to have_selector('code')
+      end
+    end
+
+    context 'strong text' do
+      let(:text) { '**Something highlighted**' }
+
+      it "converts markdown to html" do
+        expect(helper.to_html(text)).to have_selector('strong')
+      end
+    end
+  end
+end

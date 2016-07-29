@@ -10,8 +10,27 @@ module ApplicationHelper
   def alert_message(message, type = 'info')
     %(
       <div class="alert alert-#{type}" role="alert">
-        #{message}
+    #{message}
       </div>
     )
+  end
+
+  def to_html(text)
+    render_options = {
+      filter_html:     true,
+      hard_wrap:       true,
+      link_attributes: { rel: 'nofollow' }
+    }
+
+    renderer = Redcarpet::Render::HTML.new(render_options)
+
+    extensions = {
+      fenced_code_blocks: true,
+      lax_spacing:        true,
+      no_intra_emphasis:  true,
+      strikethrough:      true,
+      superscript:        true
+    }
+    Redcarpet::Markdown.new(renderer, extensions).render(text).html_safe
   end
 end

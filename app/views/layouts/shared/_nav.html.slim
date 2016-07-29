@@ -1,19 +1,13 @@
 nav.navbar.navbar-default.navbar-custom.navbar-fixed-top
   .container-fluid
-    /! Brand and toggle get grouped for better mobile display
     .navbar-header.page-scroll
-      button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
-        span.sr-only Toggle navigation
-        | Menu
-        i.fa.fa-bars
       - if current_user
         = link_to 'Manage Posts', admin_posts_path, class: 'navbar-brand'
       - else
         = link_to 'Sign in', sign_in_path, class: 'navbar-brand'
-    /! Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      ul.nav.navbar-nav.navbar-right
-        li= link_to 'Home', root_path
-        li= link_to 'Posts', posts_path
-        li= link_to 'Articles', '#'
+    ul.nav.navbar-nav.navbar-right
+      li= link_to 'Home', root_path
+      li= link_to 'Posts', posts_path
+      li= link_to 'Articles', '#'
+      - if current_user
         li= link_to 'Sign out', sign_out_path

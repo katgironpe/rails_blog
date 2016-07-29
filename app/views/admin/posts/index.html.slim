@@ -1,12 +1,14 @@
+= render 'admin/shared/nav'
+
 = link_to 'Create a new post', new_admin_post_path
 
-h1 Listing posts
+h2 Listing posts
 
-table
-  thead
+table.table.table-hover
+  thead.thead-inverse
     tr
       th Title
-      th Body
+      th Date Created
       th
       th
       th
@@ -15,7 +17,7 @@ table
     - @posts.each do |post|
       tr
         td = post.title
-        td = post.body
+        td = local_time post.created_at
         td = link_to 'Show', admin_post_path(post)
         td = link_to 'Edit', edit_admin_post_path(post)
         td = link_to 'Destroy', admin_post_path(post), data: { confirm: 'Are you sure?' }, method: :delete

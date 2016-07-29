@@ -13,8 +13,10 @@
 @import 'components/pagination';
 
 // Sections
+@import 'sections/admin';
 @import 'sections/posts';
 @import 'sections/sections';
+@import 'sections/sign_in';
 
 body {
   @include serif-font;
