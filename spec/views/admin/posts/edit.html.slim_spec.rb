@@ -1,17 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe "posts/edit", type: :view do
+describe "admin/posts/edit" do
+  let(:post) { create(:post) }
+
   before(:each) do
-    @post = assign(:post, Post.create!(
-      :title => "MyString",
-      :body => "MyText"
-    ))
+    assign(:post, post)
   end
 
   it "renders the edit post form" do
     render
 
-    assert_select "form[action=?][method=?]", post_path(@post), "post" do
+    assert_select "form[action=?][method=?]", admin_post_path(post.slug), "post" do
 
       assert_select "input#post_title[name=?]", "post[title]"
 

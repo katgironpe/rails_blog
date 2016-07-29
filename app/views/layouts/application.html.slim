@@ -4,11 +4,19 @@ html
     title
       | Rails Blog Example
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" /
+    link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" /
+
+    /![if lt IE 9]
+     | <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script
+     | <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script
+
   body
-    p.notice
-      = notice
-    p.alert
-      = alert
-    = yield
+    = render 'layouts/shared/nav'
+    = render 'layouts/shared/header'
+    section.container
+      = alert_message(notice).html_safe if notice.present?
+      = alert_message(alert).html_safe if alert.present?
+      = yield
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

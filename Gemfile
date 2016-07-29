@@ -2,11 +2,13 @@ source 'https://rubygems.org'
 
 gem 'devise', github: 'plataformatec/devise'
 gem 'friendly_id', '~> 5.1.0'
+gem 'kaminari', '~> 0.17'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.0'
+gem 'redcarpet'
 gem 'sass-rails', '~> 5.0'
 gem 'slim-rails', '~> 3.1.0'
 gem 'turbolinks', '~> 5'
@@ -14,6 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'dotenv-rails'
   gem 'ffaker'
 end
 

@@ -64,3 +64,5 @@ bower.json
 .byebug_history
 
 node_modules
+bower_components
+.env

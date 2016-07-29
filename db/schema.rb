@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20160728153843) do
   end
 
   create_table "posts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "user_id"
+    t.uuid     "user_id"
     t.string   "title"
     t.text     "body"
     t.string   "slug"

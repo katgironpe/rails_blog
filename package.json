@@ -2,6 +2,5 @@
   "repository": {},
   "engine": "node 6.0.0",
   "dependencies": {
-    "bootstrap": "~v4.0.0-alpha.3"
   }
 }

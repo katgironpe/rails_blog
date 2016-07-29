@@ -1,0 +1,25 @@
+@import 'bootstrap/dist/css/bootstrap';
+@import "variables";
+@import "mixins";
+
+// Globals
+@import 'globals/buttons';
+@import 'globals/form';
+@import 'globals/typography';
+
+// Components
+@import 'components/nav';
+@import 'components/header';
+@import 'components/pagination';
+
+// Sections
+@import 'sections/posts';
+@import 'sections/sections';
+
+body {
+  @include serif-font;
+  font-size: 20px;
+  color: $gray-dark;
+  -webkit-tap-highlight-color: $theme-primary;
+}
+

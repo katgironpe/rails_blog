@@ -1,0 +1,35 @@
+.pager {
+  margin: 20px 0 0;
+
+  li {
+    > a,
+    > span {
+      @include sans-serif-font;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 15px 25px;
+      background-color: white;
+      border-radius: 0;
+    }
+
+    > a:hover,
+    > a:focus {
+      color: white;
+      background-color: $theme-primary;
+      border: 1px solid $theme-primary;
+    }
+  }
+
+  .disabled {
+    > a,
+    > a:hover,
+    > a:focus,
+    > span {
+      color: $gray-light;
+      background-color: $gray-dark;
+      cursor: not-allowed;
+    }
+  }
+}
