@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 %w(
+  capybara/poltergeist
   email_spec
   rspec/rails
   capybara/rails
@@ -52,6 +53,18 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Warden::Test::Helpers
   config.include ControllerMacros, type: :controller
+  config.include Features::SessionHelpers, type: :feature
 
-  Capybara.default_driver = :selenium
+  Capybara.default_driver = :poltergeist
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end

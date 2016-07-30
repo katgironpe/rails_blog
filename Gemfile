@@ -35,10 +35,17 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'email_spec'
   gem 'factory_girl_rails', '~> 4.7.0'
   gem 'launchy'
+  gem 'poltergeist'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.5.0.beta4'
   gem 'shoulda-matchers'
+end
+
+group :production do
+  gem 'heroku-deflater'
+  gem 'rails_12factor', '~> 0.0'
 end

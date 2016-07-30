@@ -2,7 +2,7 @@ nav.navbar.navbar-default.navbar-custom.navbar-fixed-top
   .container-fluid
     .navbar-header.page-scroll
       - if current_user
-        = link_to 'Manage Posts', admin_posts_path, class: 'navbar-brand'
+        = link_to 'Admin', admin_posts_path, class: 'navbar-brand'
       - else
         = link_to 'Sign in', sign_in_path, class: 'navbar-brand'
     ul.nav.navbar-nav.navbar-right

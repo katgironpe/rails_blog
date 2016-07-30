@@ -5,17 +5,14 @@ export default class CommentsForm extends React.Component {
   static propTypes = {
   };
 
-  getInitialState() {
-    return {
-      comment: null,
-      errors: {}
-    }
-  },
-
   constructor(props, context) {
     super(props, context);
 
-    //_.bindAll(this, 'handleSubmit');
+    _.bindAll(this, 'handleSubmit');
+  }
+
+  handleSubmit() {
+    console.log('Called')
   }
 
   render() {
@@ -23,14 +20,13 @@ export default class CommentsForm extends React.Component {
       <section className="container comments-form">
         <hr />
         <form className="form-horizontal">
-          <label>Name</label>
+          <label for="user_name">Name</label>
           <input
+            id="user_name"
             type="text"
           />
-          <label>Body</label>
-          <input
-            type="text"
-          />
+          <label for="body">Body</label>
+          <textarea id="body" value="body" />
         </form>
       </section>
     );

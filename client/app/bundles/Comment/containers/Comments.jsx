@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import CommentsForm from '../components/CommentsWidget';
+import CommentsForm from '../components/CommentsForm';
 import CommentsWidget from '../components/CommentsWidget';
 import _ from 'lodash';
 
