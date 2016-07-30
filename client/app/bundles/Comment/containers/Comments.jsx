@@ -12,12 +12,10 @@ export default class Comments extends React.Component {
 
     this.state = {
       comments: this.props.comments,
-      comment: {
-        commentable_id: '',
-        commentable_type: '',
-        user_name: '',
-        body: ''
-      },
+      commentable_id: this.props.commentable_id,
+      commentable_type: this.props.commentable_type,
+      user_name: '',
+      body: '',
       errors: {}
     };
   }
@@ -25,7 +23,7 @@ export default class Comments extends React.Component {
   render() {
     return (
       <section>
-        <CommentsForm />
+        <CommentsForm commentable_id={ this.state.commentable_id } commentable_type={ this.state.commentable_type } user_name={ this.state.user_name } body={ this.state.body } errors={ this.state.errors} />
         <CommentsWidget comments={ this.state.comments } />
       </section>
     );

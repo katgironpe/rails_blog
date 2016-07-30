@@ -10,7 +10,7 @@ install:
   - npm install -g bower
   - bundle install
   - npm install
-  - sh -c 'rm app/assets/webpack/* || true && cd client && npm run build:dev:client'
+  - cd client && webpack --config webpack.client.rails.config.js
   - cd ..
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres

@@ -11,10 +11,24 @@ export default class CommentsForm extends React.Component {
     _.bindAll(this, 'handleSubmit');
   }
 
+  clearForm() {
+    document.getElementById('new-comment').reset();
+  }
+
+  handleNameChange(e) {
+    this.setState({ user_name: e.target.value });
+  }
+
+  handleCommentChange(e) {
+    this.setState({ body: e.target.value });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    const { name, body } = this.refs;
-    console.log(`Send ${name.value} and ${body.value}`)
+    const { user_name, body } = this.state;
+    const { commentable_id, commentable_type } = this.props;
+    console.log(`Send ${user_name}, ${commentable_id}, ${commentable_type} and ${body}`)
+    this.clearForm()
   }
 
   render() {
@@ -25,11 +39,11 @@ export default class CommentsForm extends React.Component {
           <fieldset>
             <div className="form-group">
               <label>Name</label>
-              <input name="comment_user_name" ref="name" required="true" type="text" placeholder="Your Full Name" className="form-control" />
+              <input name="comment_user_name" ref="user_name" onChange={::this.handleNameChange} type="text" placeholder="Your Full Name" className="form-control" />
             </div>
             <div className="form-group">
               <label>Comment</label>
-              <textarea name="comment_body" ref="body" required="true" placeholder="Your comment" className="form-control" />
+              <textarea name="comment_body" ref="body" onChange={::this.handleCommentChange} placeholder="Your comment" className="form-control" />
             </div>
           </fieldset>
           <button className="create-comment-btn btn btn-primary" type="submit">Post your comment</button>
