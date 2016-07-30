@@ -6,6 +6,7 @@
     "npm": "3.5.0"
   },
   "scripts": {
+    "preinstall": "npm install -g bower && bower install",
     "postinstall": "cd client && npm install",
     "rails-server": "foreman start -f Procfile.dev",
     "build:production:client": "(cd client && npm run build:production:client --silent)",
