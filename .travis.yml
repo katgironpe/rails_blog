@@ -3,8 +3,18 @@ rvm:
   - 2.3.1
 services:
   - postgresql
+before_install:
+  - npm install -g npm
+  - npm install -g poltergeist
+  - npm install -g webpack
+  - npm install -g bower
+  - gem install bundler
+  - bundle install
+  - ENABLE_TURBOLINKS_5=TRUE bundle install
+  - npm install
+  - npm run build:dev:client
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
-  - npm run preinstall
-  - npm run build:dev:client
+script:
+  - rake
