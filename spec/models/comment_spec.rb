@@ -12,7 +12,7 @@ describe Comment do
 
   describe '#as_json' do
     it 'only returns user_name and body' do
-      expect(comment.as_json).to eq({"user_name" => comment.user_name, "body" => comment.body})
+      expect(comment.as_json).to eq({"id" => comment.id, "user_name" => comment.user_name, "body" => comment.body})
     end
   end
 end

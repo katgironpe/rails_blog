@@ -15,17 +15,12 @@ export default class CommentsForm extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    _.bindAll(this, 'handleChange');
+    //_.bindAll(this, 'handleSubmit');
   }
 
   render() {
-    const { comments } = this.props;
     return (
-      <section className="container comments">
-        <hr />
-        <h4>Comments</h4>
-
-
+      <section className="container comments-form">
         <hr />
         <form className="form-horizontal">
           <label>Name</label>

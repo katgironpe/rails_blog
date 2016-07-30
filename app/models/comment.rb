@@ -11,6 +11,6 @@ class Comment < ApplicationRecord
   paginates_per 10
 
   def as_json(options={})
-    super(only:  [:user_name, :body])
+    super(only:  [:id, :user_name, :body])
   end
 end

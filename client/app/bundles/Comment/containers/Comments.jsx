@@ -10,9 +10,16 @@ export default class Comments extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.state = { comments: this.props.comments };
-
-    //_.bindAll(this, 'updateName');
+    this.state = {
+      comments: this.props.comments,
+      comment: {
+        commentable_id: '',
+        commentable_type: '',
+        user_name: '',
+        body: ''
+      },
+      errors: {}
+    };
   }
 
   render() {
