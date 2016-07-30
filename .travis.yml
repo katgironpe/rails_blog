@@ -10,9 +10,7 @@ before_install:
   - npm install -g bower
   - gem install bundler
   - bundle install
-  - ENABLE_TURBOLINKS_5=TRUE bundle install
   - npm install
-  - npm run build:dev:client
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
