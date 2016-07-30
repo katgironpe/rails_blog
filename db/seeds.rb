@@ -10,3 +10,10 @@ user.confirm
   post.body = FFaker::LoremFR.paragraphs(5).join("\n")
   post.save!
 end
+
+# Populate DB with comments
+Post.all.each do |post|
+  1000.times do
+    post.comments.create(user_name: FFaker::Name.name, body: FFaker::LoremFR.paragraph)
+  end
+end

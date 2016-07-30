@@ -11,9 +11,14 @@ class Post < ApplicationRecord
   default_scope -> { order('created_at') }
 
   friendly_id :title, use: :slugged
-  paginates_per 7
+  paginates_per 10
 
   def author_name
     user.try(:name)
+  end
+
+  def as_json(options={})
+    super(only:  [:user_id, :title, :body],
+          include: { comments: { only: [:user_name, :body]} })
   end
 end

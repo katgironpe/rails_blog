@@ -66,3 +66,9 @@ bower.json
 node_modules
 bower_components
 .env
+# React on Rails
+npm-debug.log
+node_modules
+
+# Generated js bundles
+/app/assets/webpack/*

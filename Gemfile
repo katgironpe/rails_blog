@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'active_model_serializers', '~> 0.10.1'
 gem 'devise', github: 'plataformatec/devise'
 gem 'friendly_id', '~> 5.1.0'
 gem 'kaminari', '~> 0.17'

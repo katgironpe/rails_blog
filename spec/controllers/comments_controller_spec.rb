@@ -44,12 +44,12 @@ describe CommentsController do
     context 'with valid params' do
       it 'creates a new Comment' do
         expect {
-          post :create, params: {comment: valid_attributes}, xhr: true
+          post :create, params: { comment: valid_attributes }, xhr: true
         }.to change(Comment, :count).by(1)
       end
 
       it 'assigns a newly created comment as @comment' do
-        post :create, params: {comment: valid_attributes}, xhr: true
+        post :create, params: { comment: valid_attributes }, xhr: true
         expect(assigns(:comment)).to be_a(Comment)
         expect(assigns(:comment)).to be_persisted
       end
@@ -63,16 +63,10 @@ describe CommentsController do
     end
   end
 
-  xdescribe '#update' do
+  describe '#update' do
     context 'with valid params' do
+      let(:comment) { create(:comment) }
       let(:new_attributes) { attributes_for(:comment, body: 'Hello') }
-
-      it 'updates the requested comment' do
-        comment = Comment.create! valid_attributes
-        put :update, params: {id: comment.to_param, comment: new_attributes}, xhr: true
-        comment.reload
-        expect(assigns(:comment).body).to eq(new_attributes[:body])
-      end
 
       it 'assigns the requested comment as @comment' do
         comment = Comment.create! valid_attributes

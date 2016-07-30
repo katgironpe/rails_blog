@@ -4,9 +4,11 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.order('created_at DESC').page(params[:page])
+    respond_with @comments
   end
 
   def show
+    respond_with @comment
   end
 
   def new

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "posts/show" do
+xdescribe "posts/show" do
   before(:each) do
     @post = assign(:post, create(:post, title: 'Title', body: 'MyText'))
   end

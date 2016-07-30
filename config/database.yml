@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: rails_blog_production
-  username: rails_blog
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>

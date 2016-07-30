@@ -6,3 +6,4 @@ article
         p.post-meta
           | Posted by <a href="#">#{@post.author_name}</a> on #{local_time @post.created_at}
         = to_html @post.body
+        = react_component('CommentsApp', props: { comments: @post.comments[0..9].as_json }, prerender: false)

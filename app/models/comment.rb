@@ -9,4 +9,8 @@ class Comment < ApplicationRecord
   default_scope -> { order('created_at') }
 
   paginates_per 10
+
+  def as_json(options={})
+    super(only:  [:user_name, :body])
+  end
 end
