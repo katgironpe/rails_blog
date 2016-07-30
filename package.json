@@ -6,7 +6,7 @@
     "npm": "3.5.0"
   },
   "scripts": {
-    "preinstall": "npm install -g bower && bower install",
+    "preinstall": "npm install -g bower && npm install -g webpack && bower install",
     "postinstall": "cd client && npm install",
     "rails-server": "foreman start -f Procfile.dev",
     "rs": "foreman start -f Procfile.dev",
