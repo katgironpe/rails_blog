@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Posts' do
   let(:user) { build(:user) }
-  let(:post) { build(:post) }
+  let(:post) { build(:post, title: 'How to create React.js apps') }
 
   scenario 'User not signed signs up to create a new post' do
     reset_mailer

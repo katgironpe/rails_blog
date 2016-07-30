@@ -24,11 +24,11 @@ export default class CommentsForm extends React.Component {
           <fieldset>
             <div className="form-group">
               <label>Name</label>
-              <input name="comment_user_name" type="text" placeholder="Your Full Name" className="form-control" />
+              <input name="comment_user_name" ref="name" required="true" type="text" placeholder="Your Full Name" className="form-control" />
             </div>
             <div className="form-group">
               <label>Comment</label>
-              <textarea name="comment_body" placeholder="Your comment" className="form-control" />
+              <textarea name="comment_body" ref="body" required="true" placeholder="Your comment" className="form-control" />
             </div>
           </fieldset>
           <button className="create-comment-btn btn btn-primary" type="submit">Post your comment</button>
