@@ -25,6 +25,7 @@ export default class Comments extends React.Component {
   render() {
     return (
       <section>
+        <CommentsForm />
         <CommentsWidget comments={ this.state.comments } />
       </section>
     );

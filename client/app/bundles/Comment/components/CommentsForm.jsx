@@ -11,22 +11,27 @@ export default class CommentsForm extends React.Component {
     _.bindAll(this, 'handleSubmit');
   }
 
-  handleSubmit() {
-    console.log('Called')
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log('Create Comment Called')
   }
 
   render() {
     return (
       <section className="container comments-form">
         <hr />
-        <form className="form-horizontal">
-          <label for="user_name">Name</label>
-          <input
-            id="user_name"
-            type="text"
-          />
-          <label for="body">Body</label>
-          <textarea id="body" value="body" />
+        <form id="new-comment" className="comment-form" onSubmit={::this.handleSubmit}>
+          <fieldset>
+            <div className="form-group">
+              <label>Name</label>
+              <input name="comment_user_name" type="text" placeholder="Your Full Name" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label>Comment</label>
+              <textarea name="comment_body" placeholder="Your comment" className="form-control" />
+            </div>
+          </fieldset>
+          <button className="create-comment-btn btn btn-primary" type="submit">Post your comment</button>
         </form>
       </section>
     );

@@ -4,16 +4,14 @@ rvm:
 services:
   - postgresql
 install:
-  - npm install -g npm
-  - npm install -g poltergeist
+  - nvm install 6.3
+  - nvm use 6.3
   - npm install -g webpack
   - npm install -g bower
-  - gem install bundler
   - bundle install
   - npm install
-  - foreman start -f Procfile.dev
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
 script:
-  - rake
+  - DRIVER=selenium_firefox bundle exec rake
