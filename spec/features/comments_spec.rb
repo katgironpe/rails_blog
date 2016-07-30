@@ -37,7 +37,6 @@ feature 'Comments' do
     click_link 'Sign out'
 
     click_link post.title
-    expect(page).to have_text('Comments')
     expect(page).to have_field('comment_user_name')
     expect(page).to have_field('comment_body')
   end
