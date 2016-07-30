@@ -40,29 +40,6 @@ describe CommentsController do
     end
   end
 
-  xdescribe '#create' do
-    context 'with valid params' do
-      it 'creates a new Comment' do
-        expect {
-          post :create, params: { comment: valid_attributes }, xhr: true
-        }.to change(Comment, :count).by(1)
-      end
-
-      it 'assigns a newly created comment as @comment' do
-        post :create, params: { comment: valid_attributes }, xhr: true
-        expect(assigns(:comment)).to be_a(Comment)
-        expect(assigns(:comment)).to be_persisted
-      end
-    end
-
-    context 'with invalid params' do
-      it 'assigns a newly created but unsaved comment as @comment' do
-        post :create, params: {comment: invalid_attributes}, xhr: true
-        expect(assigns(:comment)).to be_a_new(Comment)
-      end
-    end
-  end
-
   describe '#update' do
     context 'with valid params' do
       let(:comment) { create(:comment) }
