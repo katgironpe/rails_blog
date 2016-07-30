@@ -1,4 +1,4 @@
-shared_examples "a restricted index page action" do
+shared_examples 'a restricted index page action' do
   context 'when user is not signed in' do
     it 'redirects to sign in page' do
       get :index
@@ -7,7 +7,7 @@ shared_examples "a restricted index page action" do
   end
 end
 
-shared_examples "a restricted new page action" do
+shared_examples 'a restricted new page action' do
   context 'when user is not signed in' do
     it 'redirects to sign in page' do
       get :new

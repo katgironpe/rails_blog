@@ -1,17 +1,17 @@
 class Post < ApplicationRecord
   extend FriendlyId
 
-  paginates_per 7
-
   belongs_to :user, inverse_of: :posts
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :user_id, presence: true
   validates :title, presence: true
   validates :body, presence: true
 
-  friendly_id :title, use: :slugged
-
   default_scope -> { order('created_at') }
+
+  friendly_id :title, use: :slugged
+  paginates_per 7
 
   def author_name
     user.try(:name)

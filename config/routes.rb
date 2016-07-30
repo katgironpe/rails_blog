@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :posts, :users
+    resources :posts, :users, :comments
   end
 
-  resources :posts
+  resources :comments, :posts
 
   root to: 'posts#index'
 end
