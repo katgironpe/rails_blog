@@ -13,7 +13,8 @@ export default class CommentsForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('Create Comment Called')
+    const { name, body } = this.refs;
+    console.log(`Send ${name.value} and ${body.value}`)
   }
 
   render() {
