@@ -7,9 +7,6 @@ describe TagsController do
   let(:tagging) { create(:tagging, tag_id: tag.id, taggable_id: post.id) }
 
   describe "GET #index" do
-    it "returns http success" do
-    end
-
     context 'with exists posts for a tag' do
       it 'returns success status' do
         get :index, params: { resource_type: 'posts', name: tag.name }
