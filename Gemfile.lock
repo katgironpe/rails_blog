@@ -107,9 +107,6 @@ GEM
       rack (>= 1.4.5)
     htmlentities (4.3.4)
     i18n (0.7.0)
-    jbuilder (2.6.0)
-      activesupport (>= 3.0.0, < 5.1)
-      multi_json (~> 1.2)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -135,7 +132,6 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
-    multi_json (1.12.1)
     nio4r (1.2.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -285,7 +281,6 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   growl
   heroku-deflater
-  jbuilder (~> 2.5)
   jquery-rails
   kaminari (~> 0.17)
   launchy
