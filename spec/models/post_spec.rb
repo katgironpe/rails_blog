@@ -21,12 +21,18 @@ describe Post do
 
   describe '#tag_names' do
     let(:tag) { create(:tag) }
+    let(:tag2) { create(:tag, name: 'movie') }
+
     let(:post) { create(:post) }
 
-    context 'when tags are entered correctly' do
-      it 'creates tags and taggings' do
-        
-      end
+    before do
+      create(:tagging, taggable_id: post.id, tag_id: tag.id)
+      create(:tagging, taggable_id: post.id, tag_id: tag2.id)
+      post.reload
+    end
+
+    it 'returns list of tags by name' do
+      expect(post.tag_names).to eq(%(#{tag2.name}, #{tag.name}))
     end
   end
 end
