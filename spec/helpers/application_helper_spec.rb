@@ -71,7 +71,7 @@ describe ApplicationHelper do
 
   describe '#tag_links' do
     context 'when the resource is a post' do
-      let(:tag) { create(:tag) }
+      let(:tag) { create(:tag, name: 'science') }
       let(:post) { create(:post) }
 
       before do
@@ -84,5 +84,4 @@ describe ApplicationHelper do
       end
     end
   end
-
 end

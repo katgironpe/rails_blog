@@ -8,6 +8,5 @@ class CreateTaggings < ActiveRecord::Migration[5.0]
     end
 
     add_index :taggings, :taggable_id
-    add_index :taggings, :taggable_type
   end
 end

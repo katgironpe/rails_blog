@@ -3,6 +3,7 @@ require 'rails_helper'
 describe User do
   let(:user) { create(:user, first_name: 'John', last_name: 'Doe') }
 
+  it { should have_many(:articles).inverse_of(:user) }
   it { should have_many(:posts).inverse_of(:user) }
 
   it { should validate_presence_of(:first_name) }

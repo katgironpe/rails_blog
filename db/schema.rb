@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730145622) do
+ActiveRecord::Schema.define(version: 20160731123335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "articles", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "user_id"
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
+    t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
+  end
 
   create_table "comments", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "commentable_type"
@@ -60,7 +71,6 @@ ActiveRecord::Schema.define(version: 20160730145622) do
     t.index ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
     t.index ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
     t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id", using: :btree
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
   end
 
   create_table "tags", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

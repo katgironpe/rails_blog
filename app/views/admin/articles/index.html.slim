@@ -1,0 +1,33 @@
+.row
+  .col-xs-6= render 'admin/shared/nav'
+  .col-xs-6
+
+.row
+  .col-xs-8
+    h2.admin-title Listing articles
+  .col-xs-4
+    .create-action= link_to 'Create a new article', new_admin_article_path, class: 'pull-xs-right btn btn-primary'
+
+.row
+  .col-xs-12
+    table.table.table-hover
+      thead.thead-inverse
+        tr
+          th Title
+          th Date Created
+          th
+          th
+          th
+
+      tbody
+        - @articles.each do |article|
+          tr
+            td = article.title
+            td = local_time article.created_at
+            td = link_to 'Show', admin_article_path(article)
+            td = link_to 'Edit', edit_admin_article_path(article)
+            td = link_to 'Destroy', admin_article_path(article), data: { confirm: 'Are you sure?' }, method: :delete
+
+.row
+  .col-xs-12
+    = raw paginate(@articles)

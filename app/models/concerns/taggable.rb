@@ -13,7 +13,7 @@ module Taggable
   end
 
   def tag_names
-    self.tags.map(&:name).join(", ")
+    self.tags.map(&:name).join(', ')
   end
 
   module ClassMethods

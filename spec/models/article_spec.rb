@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe Post do
-  it { should belong_to(:user).inverse_of(:posts) }
+describe Article do
+  it { should belong_to(:user).inverse_of(:articles) }
   it { should have_many(:comments).dependent(:destroy) }
   it { should have_many(:taggings).dependent(:destroy) }
   it { should have_many(:tags) }
@@ -12,27 +12,26 @@ describe Post do
 
   describe '#author_name' do
     let(:user) { create(:user) }
-    let(:post) { create(:post, user_id: user.id) }
+    let(:article) { create(:article, user_id: user.id) }
 
     it 'returns author name' do
-      expect(post.author_name).to eq(user.name)
+      expect(article.author_name).to eq(user.name)
     end
   end
 
   describe '#tag_names' do
     let(:tag) { create(:tag) }
     let(:tag2) { create(:tag, name: 'movie') }
-
-    let(:post) { create(:post) }
+    let!(:article) { create(:article) }
 
     before do
-      create(:tagging, taggable_id: post.id, tag_id: tag.id)
-      create(:tagging, taggable_id: post.id, tag_id: tag2.id)
-      post.reload
+      create(:tagging, taggable_id: article.id, taggable_type: 'Article', tag_id: tag.id)
+      create(:tagging, taggable_id: article.id, taggable_type: 'Article', tag_id: tag2.id)
+      article.reload
     end
 
     it 'returns list of tags by name' do
-      expect(post.tag_names).to eq(%(#{tag2.name}, #{tag.name}))
+      expect(article.tag_names).to eq(%(#{tag2.name}, #{tag.name}))
     end
   end
 end

@@ -1,0 +1,10 @@
+article
+  .container
+    .row
+      .post-preview.col-lg-12.col-lg-offset-0.col-md-12.col-md-offset-0
+        h1.post-title= link_to @article.title, @article
+        p.post-meta
+          | Posted by <a href="#">#{@article.author_name}</a> on #{local_time @article.created_at}
+        .tags= tag_links('articles', @article.tag_names).html_safe
+        = to_html @article.body
+        = react_component('CommentsApp', props: { commentable_id: @article.id, commentable_type: 'Article' }, prerender: false)
