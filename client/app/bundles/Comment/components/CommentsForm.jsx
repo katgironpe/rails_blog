@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
-import _ from 'lodash';
-import CommentsWidget from '../components/CommentsWidget';
+import _                    from 'lodash';
+import Pagination           from 'react-js-pagination';
+import CommentsWidget       from '../components/CommentsWidget';
 
 export default class CommentsForm extends React.Component {
   static propTypes = {
@@ -11,25 +12,35 @@ export default class CommentsForm extends React.Component {
 
     this.state = {
       comments: this.props.comments,
+      commentable_id: this.props.commentable_id,
+      commentable_type: this.props.commentable_type,
       user_name: null,
-      body: null
+      body: null,
+      pagination: null,
+      pages: null,
+      activePage: 1
     };
 
     _.bindAll(this, 'handleSubmit');
   }
 
-  componentDidMount() {
-    const { commentable_id } = this.props;
-
-    $.get(`/post/${commentable_id}/comments`, function(result) {
+  loadComments(commentable_id, page = null) {
+    const commentsUrl =(page !== null) ? `/post/${commentable_id}/comments?page=${page}` : `/post/${commentable_id}/comments`;
+    $.get(commentsUrl, function(result) {
       this.setState({
-        comments: result
+        comments: result.comments,
+        pagination: result.pagination
       });
     }.bind(this));
   }
 
+  componentDidMount() {
+    const { commentable_id } = this.props;
+    this.loadComments(commentable_id);
+  }
+
   clearForm() {
-    document.getElementById('new-comment').reset();
+    $('.comment-form').reset();
   }
 
   handleNameChange(e) {
@@ -51,8 +62,7 @@ export default class CommentsForm extends React.Component {
         commentable_id: commentable_id,
         commentable_type: commentable_type,
         user_name: user_name,
-        body: body,
-        errors: []
+        body: body
       }
     };
 
@@ -72,11 +82,32 @@ export default class CommentsForm extends React.Component {
       .done(function(data) {
         const comments = [data].concat(this.state.comments);
         this.setState(
-          { comments: comments },
+          {
+            comments: comments,
+            pagination: data.pagination
+          },
         );
       }.bind(this));
     }
     this.clearForm();
+  }
+
+  handlePageChange(pageNumber) {
+    this.setState({ activePage: pageNumber });
+    const { commentable_id } = this.props;
+    this.loadComments(commentable_id, pageNumber);
+  }
+
+  renderPagination(pagination) {
+    if (pagination !== null) {
+      return(
+        <Pagination
+          activePage={ this.state.pagination.current_page }
+          totalItemsCount={ this.state.pagination.total_count }
+          onChange={this.handlePageChange.bind(this)}
+        />
+      )
+    }
   }
 
   render() {
@@ -98,7 +129,8 @@ export default class CommentsForm extends React.Component {
             <button className="create-comment-btn btn btn-primary" type="submit">Post your comment</button>
           </form>
         </section>
-        <CommentsWidget comments={ this.state.comments } />
+        <CommentsWidget comments={ this.state.comments } pagination= { this.state.pagination } />
+        { ::this.renderPagination(this.state.pagination) }
       </section>
     );
   }

@@ -7,7 +7,6 @@ export default class CommentsWidget extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-    //_.bindAll(this, 'handleSubmit');
   }
 
   render() {
@@ -30,7 +29,6 @@ export default class CommentsWidget extends React.Component {
         <h4>Comments</h4>
 
         {comments}
-        <hr />
       </section>
     );
   }

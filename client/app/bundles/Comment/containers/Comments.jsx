@@ -15,14 +15,15 @@ export default class Comments extends React.Component {
       commentable_type: this.props.commentable_type,
       user_name: '',
       body: '',
-      errors: {}
+      errors: {},
+      pages: null
     };
   }
 
   render() {
     return (
       <section>
-        <CommentsForm comments={ this.state.comments } commentable_id={ this.state.commentable_id } commentable_type={ this.state.commentable_type } user_name={ this.state.user_name } body={ this.state.body } errors={ this.state.errors} />
+        <CommentsForm comments={ this.state.comments } pages={ this.state.pages } commentable_id={ this.state.commentable_id } commentable_type={ this.state.commentable_type } user_name={ this.state.user_name } body={ this.state.body } errors={ this.state.errors} />
       </section>
     );
   }

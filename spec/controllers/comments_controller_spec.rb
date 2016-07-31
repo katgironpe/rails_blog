@@ -8,11 +8,27 @@ describe CommentsController do
   let(:invalid_attributes) { attributes_for(:comment, commentable_id: '') }
 
   describe '#index' do
-    it 'assigns all comments as @comments' do
-      comment = Comment.create! valid_attributes
-      get :index, xhr: true
-      expect(assigns(:comments)).to eq([comment])
-      expect(response.code).to eq('200')
+    context "without post_id parameter" do
+      before do
+        create(:comment)
+      end
+
+      it 'assigns all comments as @comments' do
+        comment = Comment.create! valid_attributes
+        get :index, xhr: true
+        expect(assigns(:comments).count).to eq(2)
+        expect(response.code).to eq('200')
+      end
+    end
+
+    context "with post_id parameter" do
+      it 'assigns all comments as @comments' do
+        comment = Comment.create! valid_attributes
+        get :index, post_id: post.id, xhr: true
+        expect(assigns(:comments)).to eq([comment])
+        expect(assigns(:comments).count).to eq(1)
+        expect(response.code).to eq('200')
+      end
     end
   end
 

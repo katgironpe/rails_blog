@@ -3,8 +3,19 @@ class CommentsController < ApplicationController
   respond_to :json
 
   def index
-    @comments = Comment.where(params[:post_id]).order('created_at DESC').page(params[:page])
-    respond_with @comments
+    if params[:post_id]
+      @comments = Comment.where(commentable_id: params[:post_id]).order('created_at DESC').page(params[:page])
+    else
+      @comments = Comment.order('created_at DESC').page(params[:page])
+    end
+
+     respond_with  comments: @comments, pagination: {
+      current_page: @comments.current_page,
+      next_page: @comments.next_page,
+      prev_page: @comments.prev_page,
+      total_pages: @comments.total_pages,
+      total_count: @comments.total_count
+    }
   end
 
   def show

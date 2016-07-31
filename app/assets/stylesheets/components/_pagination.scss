@@ -1,10 +1,13 @@
-.pager {
-  margin: 20px 0 0;
+.pagination {
+  margin: 20px 0 100px 0;
 
   li {
+    display: inline-block;
+    list-style-type: none;
     > a,
     > span {
       @include sans-serif-font;
+      text-decoration: none;
       text-transform: uppercase;
       font-size: 14px;
       font-weight: 800;

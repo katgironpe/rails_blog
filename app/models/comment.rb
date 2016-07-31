@@ -8,7 +8,7 @@ class Comment < ApplicationRecord
 
   default_scope -> { order('created_at DESC') }
 
-  paginates_per 10
+  paginates_per 5
 
   def as_json(options={})
     super(only:  [:id, :user_name, :body])
