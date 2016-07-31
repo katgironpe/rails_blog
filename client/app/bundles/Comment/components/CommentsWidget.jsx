@@ -25,7 +25,6 @@ export default class CommentsWidget extends React.Component {
 
     return (
       <section className="container paginated-comments">
-        <hr />
         <h4>Comments</h4>
 
         {comments}

@@ -17,8 +17,8 @@ export default class CommentsForm extends React.Component {
       user_name: null,
       body: null,
       pagination: null,
-      pages: null,
-      activePage: 1
+      formVisible: false,
+      showAddComment: true
     };
 
     _.bindAll(this, 'handleSubmit');
@@ -41,6 +41,7 @@ export default class CommentsForm extends React.Component {
 
   clearForm() {
     document.getElementById('new-comment').reset();
+    this.setState({ formVisible: false, showAddComment: true });
   }
 
   handleNameChange(e) {
@@ -110,23 +111,49 @@ export default class CommentsForm extends React.Component {
     )
   }
 
+  showCommentForm(e) {
+    e.preventDefault();
+    this.setState({ formVisible: true, showAddComment: false });
+  }
+
+  renderForm() {
+    const { formVisible } = this.state;
+    if (!formVisible) return false;
+
+    return (
+      <form id="new-comment" className="comment-form" onSubmit={::this.handleSubmit} >
+        <fieldset>
+          <div className="form-group">
+            <label>Name</label>
+            <input name="comment_user_name" ref="user_name" onChange={::this.handleNameChange} type="text" placeholder="Your Full Name" className="form-control" />
+          </div>
+          <div className="form-group">
+            <label>Comment</label>
+            <textarea name="comment_body" ref="body" onChange={::this.handleCommentChange} placeholder="Your comment" className="form-control" />
+          </div>
+        </fieldset>
+        <button className="create-comment-btn btn btn-primary" type="submit">Post your comment</button>
+      </form>
+    )
+  }
+
+  renderAddComment() {
+    const { showAddComment } = this.state;
+    if (!showAddComment) return false;
+
+    return (
+      <a href="#" className="btn btn-primary" onClick={ ::this.showCommentForm }>Add a comment</a>
+    )
+  }
+
   render() {
     return (
       <section className="comments">
         <section className="container comments-form">
-          <form id="new-comment" className="comment-form" onSubmit={::this.handleSubmit} >
-            <fieldset>
-              <div className="form-group">
-                <label>Name</label>
-                <input name="comment_user_name" ref="user_name" onChange={::this.handleNameChange} type="text" placeholder="Your Full Name" className="form-control" />
-              </div>
-              <div className="form-group">
-                <label>Comment</label>
-                <textarea name="comment_body" ref="body" onChange={::this.handleCommentChange} placeholder="Your comment" className="form-control" />
-              </div>
-            </fieldset>
-            <button className="create-comment-btn btn btn-primary" type="submit">Post your comment</button>
-          </form>
+          { ::this.renderAddComment() }
+          <br />
+          {:: this.renderForm() }
+          <br />
         </section>
         <CommentsWidget comments={ this.state.comments } pagination={ this.state.pagination } />
         { ::this.renderPagination(this.state.pagination) }
