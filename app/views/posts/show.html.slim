@@ -1,7 +1,7 @@
 article
   .container
     .row
-      .post-preview.col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      .post-preview.col-lg-12.col-lg-offset-0.col-md-12.col-md-offset-0
         h1.post-title= link_to @post.title, @post
         p.post-meta
           | Posted by <a href="#">#{@post.author_name}</a> on #{local_time @post.created_at}
