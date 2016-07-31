@@ -5,5 +5,6 @@ article
         h1.post-title= link_to @post.title, @post
         p.post-meta
           | Posted by <a href="#">#{@post.author_name}</a> on #{local_time @post.created_at}
+        .tags= tag_links('posts', @post.tag_names).html_safe
         = to_html @post.body
         = react_component('CommentsApp', props: { commentable_id: @post.id, commentable_type: 'Post' }, prerender: false)

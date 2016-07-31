@@ -1,0 +1,14 @@
+.tags {
+  > a {
+    background: #eb712b;
+    border-radius: 8%;
+    color: #fff;
+    padding: 7px 12px;
+
+    &:hover {
+      background: #eee;
+      color: #333;
+      text-decoration: none;
+    }
+  }
+}

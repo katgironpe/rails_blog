@@ -11,8 +11,8 @@
       = f.label :title
       = f.text_field :title, class: 'form-control'
     .form-group
-      = f.label :tags_list
-      = f.text_field :tags_list, class: 'form-control'
+      = f.label :tags
+      = f.text_field :tag_names, class: 'form-control', placeholder: 'Enter tags separated by a comma (,)'
     .form-group
       = f.label :body
       = f.text_area :body, class: 'form-control'

@@ -7,15 +7,10 @@ class PostsController < ApplicationController
 
   def show
     @title = @post.title
-    @hello_world_props = { name: 'Katherine' }
   end
 
   private
   def set_post
     @post = Post.friendly.find(params[:id])
-  end
-
-  def post_params
-    params.require(:post).permit(:title, :body)
   end
 end

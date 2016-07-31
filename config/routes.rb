@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   resources :comments, :posts
 
-  get '/post/:post_id/comments' => 'comments#index', post_id: nil, as:'post_comments'
+  get 'post/:post_id/comments' => 'comments#index', post_id: nil, as:'post_comments'
+  get 'tags/:resource_type/:name' => 'tags#index', as: 'tags'
 
   root to: 'posts#index'
 end

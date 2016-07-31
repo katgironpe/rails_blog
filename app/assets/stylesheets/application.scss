@@ -8,9 +8,11 @@
 @import 'globals/typography';
 
 // Components
-@import 'components/nav';
+@import 'components/comments';
 @import 'components/header';
+@import 'components/nav';
 @import 'components/pagination';
+@import 'components/tags';
 
 // Sections
 @import 'sections/admin';

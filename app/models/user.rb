@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   paginates_per 7
+
   devise :database_authenticatable, :confirmable, :lockable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 

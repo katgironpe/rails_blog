@@ -5,4 +5,8 @@ class Tagging < ApplicationRecord
   validates :tag_id, presence: true
   validates :taggable_id, presence: true
   validates :taggable_type, presence: true
+
+  def resource
+    self.taggable_type.constantize.find(self.taggable.id)
+  end
 end

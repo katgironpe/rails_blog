@@ -6,4 +6,15 @@ describe Tagging do
 
   it { should validate_presence_of(:taggable_id) }
   it { should validate_presence_of(:taggable_type) }
+
+  describe '#resource' do
+    context 'when the resource is a post' do
+      let(:post) { create(:post) }
+      let(:tagging) { create(:tagging, taggable_id: post.id) }
+
+      it 'returns the post resource' do
+        expect(tagging.resource).to eq(post)
+      end
+    end
+  end
 end

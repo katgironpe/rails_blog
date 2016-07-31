@@ -37,4 +37,10 @@ module ApplicationHelper
     }
     Redcarpet::Markdown.new(renderer, extensions).render(text).html_safe
   end
+
+  def tag_links(resource_type, tags)
+    tags.split(',').map do|tag|
+      link_to tag.strip, tags_path(resource_type, tag.strip)
+    end.join(' ')
+  end
 end

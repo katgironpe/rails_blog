@@ -1,0 +1,10 @@
+section.posts.row
+  h3= @title
+  - if @posts.any?
+    - @posts.each do |post|
+      article.post-preview
+        h2.post-title= link_to post.title, post
+        p.post-meta
+          | Posted by <a href="#">#{post.author_name}</a> on #{local_time post.created_at}
+      hr/
+  = paginate @posts

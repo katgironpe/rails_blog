@@ -1,5 +1,3 @@
-require 'ffaker'
-
 FactoryGirl.define do
   factory :comment do
     commentable_id   SecureRandom.uuid
