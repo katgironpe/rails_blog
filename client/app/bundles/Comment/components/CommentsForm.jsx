@@ -40,7 +40,7 @@ export default class CommentsForm extends React.Component {
   }
 
   clearForm() {
-    $('.comment-form').reset();
+    document.getElementById('new-comment').reset();
   }
 
   handleNameChange(e) {
