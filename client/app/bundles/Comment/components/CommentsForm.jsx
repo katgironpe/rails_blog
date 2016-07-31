@@ -99,22 +99,21 @@ export default class CommentsForm extends React.Component {
   }
 
   renderPagination(pagination) {
-    if (pagination !== null) {
-      return(
-        <Pagination
-          activePage={ this.state.pagination.current_page }
-          totalItemsCount={ this.state.pagination.total_count }
-          onChange={this.handlePageChange.bind(this)}
-        />
-      )
-    }
+    if (!pagination) return false;
+
+    return(
+      <Pagination
+        activePage={ pagination.current_page }
+        totalItemsCount={ pagination.total_count }
+        onChange={this.handlePageChange.bind(this)}
+      />
+    )
   }
 
   render() {
     return (
       <section className="comments">
         <section className="container comments-form">
-          <hr />
           <form id="new-comment" className="comment-form" onSubmit={::this.handleSubmit} >
             <fieldset>
               <div className="form-group">
@@ -129,7 +128,7 @@ export default class CommentsForm extends React.Component {
             <button className="create-comment-btn btn btn-primary" type="submit">Post your comment</button>
           </form>
         </section>
-        <CommentsWidget comments={ this.state.comments } pagination= { this.state.pagination } />
+        <CommentsWidget comments={ this.state.comments } pagination={ this.state.pagination } />
         { ::this.renderPagination(this.state.pagination) }
       </section>
     );
