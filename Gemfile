@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'active_model_serializers', '~> 0.10.1'
 gem 'devise', github: 'plataformatec/devise'
+gem 'ffaker'
 gem 'friendly_id', '~> 5.1.0'
 gem 'kaminari', '~> 0.17'
 gem 'jbuilder', '~> 2.5'
@@ -20,7 +21,6 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'dotenv-rails'
-  gem 'ffaker'
 end
 
 group :development do
