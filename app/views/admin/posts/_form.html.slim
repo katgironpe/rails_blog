@@ -11,6 +11,9 @@
       = f.label :title
       = f.text_field :title, class: 'form-control'
     .form-group
+      = f.label :tags_list
+      = f.text_field :tags_list, class: 'form-control'
+    .form-group
       = f.label :body
       = f.text_area :body, class: 'form-control'
   = f.submit 'Submit', class: 'btn btn-primary'

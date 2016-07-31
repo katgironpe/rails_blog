@@ -4,6 +4,7 @@ describe Post do
   it { should belong_to(:user).inverse_of(:posts) }
   it { should have_many(:comments).dependent(:destroy) }
   it { should have_many(:taggings).dependent(:destroy) }
+  it { should have_many(:tags) }
 
   it { should validate_presence_of(:user_id) }
   it { should validate_presence_of(:title) }
