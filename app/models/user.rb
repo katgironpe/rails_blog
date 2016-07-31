@@ -8,7 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :confirmable, :lockable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
-  default_scope -> { order('last_name') }
+  default_scope -> { order('last_name ASC') }
 
   def name
     [first_name, last_name].join(' ')

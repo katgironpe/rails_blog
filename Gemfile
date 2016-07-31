@@ -39,9 +39,9 @@ group :test do
   gem 'email_spec'
   gem 'factory_girl_rails', '~> 4.7.0'
   gem 'launchy'
-  gem 'poltergeist'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.5.0.beta4'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
 

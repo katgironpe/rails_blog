@@ -7,23 +7,25 @@ export default class CommentsWidget extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-
     //_.bindAll(this, 'handleSubmit');
   }
 
   render() {
     let comments = this.props.comments;
     comments = comments.map( function(comment) {
-      return (
-        <div key={comment.id}>
-          <strong>{comment.user_name}</strong>
-          <p>{comment.body}</p>
-        </div>
-      );
+      if (comment) {
+        return (
+          <div key={comment.id}>
+            <strong>{comment.user_name}</strong>
+            <p>{comment.body}</p>
+            <hr />
+          </div>
+        );
+      }
     });
 
     return (
-      <section className="container comments">
+      <section className="container paginated-comments">
         <hr />
         <h4>Comments</h4>
 

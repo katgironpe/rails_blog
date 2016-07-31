@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 
-  default_scope -> { order('created_at') }
+  default_scope -> { order('created_at DESC') }
 
   friendly_id :title, use: :slugged
   paginates_per 10

@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
   validates :user_name, presence: true
   validates :body, presence: true
 
-  default_scope -> { order('created_at') }
+  default_scope -> { order('created_at DESC') }
 
   paginates_per 10
 
