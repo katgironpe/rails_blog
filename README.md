@@ -1,6 +1,6 @@
 # Yet another blog app [![Build Status](https://travis-ci.org/katgironpe/rails_blog.svg?branch=master)](https://travis-ci.org/katgironpe/rails_blog)
 
-*This example app use Ruby on Rails and React.js.*
+*This example app uses Ruby on Rails and React.js.*
 
 
 ## Prerequisites
