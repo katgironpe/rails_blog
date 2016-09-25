@@ -8,7 +8,7 @@ gem 'kaminari', '~> 0.17'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.0.0.1'
 gem 'react_on_rails', '~> 5'
 gem 'redcarpet', '~> 3.0.0'
 gem 'responders', '~> 2.2.0'
@@ -41,7 +41,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.5.0.beta4'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', require: false
 end
 
 group :production do

@@ -5,9 +5,10 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 %w(
+  capybara/rails
   email_spec
   rspec/rails
-  capybara/rails
+  shoulda/matchers
 ).each do |d|
   require d
 end
@@ -15,6 +16,14 @@ end
 ActiveRecord::Migration.maintain_test_schema!
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
 
 RSpec.configure do |config|
   # Ensure that if we are running js tests, we are using latest webpack assets
